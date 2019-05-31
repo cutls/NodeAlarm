@@ -10,7 +10,10 @@ reader.on('line', (line) => {
     if (line.length == 4) {
         if (line == "9999") {
             //reset
-            let result =  execSync('killall mpg321');
+            exec('killall mpg321', (err, stdout, stderr) => {
+                if (err) { console.log(err); }
+                console.log(stdout);
+              });
             playing = false
             if (timer) {
                 clearInterval(timer);

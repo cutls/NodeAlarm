@@ -15,9 +15,10 @@ reader.on('line', (line) => {
             if (timer) {
                 clearInterval(timer);
             }
-            if(child){
+            if(result){
                 console.log("will killed")
-                child_process.spawn('kill', [child.pid]);
+                result.kill("SIGTERM");
+                child_process.exec('killall mpg321' , function(err, stdout,stderr){});
             }else{
                 console.log("not working")
             }
@@ -42,8 +43,7 @@ reader.on('line', (line) => {
                             fileList[i] = fileList[r];
                             fileList[r] = tmp;
                         }
-                        child  = child_process.fork("./play");
-                        child.send({ message:base+"/"+fileList[i] });
+                        result = child_process.exec('mpg321 '+base+"/"+fileList[i] , function(err, stdout,stderr){});
                         playing = true
                         clearInterval(timer);
                     });

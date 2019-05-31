@@ -42,7 +42,8 @@ reader.on('line', (line) => {
                             fileList[i] = fileList[r];
                             fileList[r] = tmp;
                         }
-                        child  = child_process.fork('mpg321 '+base+"/"+fileList[i]);
+                        child  = child_process.fork("./play");
+                        child.send({ message:base+"/"+fileList[i] });
                         playing = true
                         clearInterval(timer);
                     });

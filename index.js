@@ -15,9 +15,9 @@ reader.on('line', (line) => {
             if (timer) {
                 clearInterval(timer);
             }
-            if(result){
+            if(child){
                 console.log("will killed")
-                result.kill();
+                child_process.spawn('kill', [child.pid]);
             }else{
                 console.log("not working")
             }
@@ -42,7 +42,7 @@ reader.on('line', (line) => {
                             fileList[i] = fileList[r];
                             fileList[r] = tmp;
                         }
-                        result = child_process.exec('mpg321 '+base+"/"+fileList[i] , function(err, stdout,stderr){});
+                        child  = child_process.fork('mpg321 '+base+"/"+fileList[i]);
                         playing = true
                         clearInterval(timer);
                     });

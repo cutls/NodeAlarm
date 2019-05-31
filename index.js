@@ -2,7 +2,7 @@ const readline = require('readline');
 require('date-utils');
 const reader = readline.createInterface({ input: process.stdin });
 const execSync = require('child_process').execSync;
-const base = "./"
+const base = "../media"
 const fs = require('fs');
 let playing = false
 

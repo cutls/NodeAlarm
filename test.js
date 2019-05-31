@@ -1,5 +1,3 @@
-const exec = require('child_process').exec;
-exec('killall mpg321', (err, stdout, stderr) => {
-  if (err) { console.log(err); }
-  console.log(stdout);
-});
+const exec = require('child_process');
+child = child_process.fork("./play");
+child.send({ message: base + "/" + fileList[i] });

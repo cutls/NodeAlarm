@@ -1,2 +1,5 @@
-const execSync = require('child_process').execSync;
-const result =  execSync('mpg321 test.mp3');
+const exec = require('child_process').exec;
+exec('mpg321 test.mp3', (err, stdout, stderr) => {
+  if (err) { console.log(err); }
+  console.log(stdout);
+});

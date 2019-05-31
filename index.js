@@ -42,7 +42,7 @@ reader.on('line', (line) => {
                             fileList[i] = fileList[r];
                             fileList[r] = tmp;
                         }
-                        var result = child_process.exec('mpg321 '+base+"/"+fileList[i] , function(err, stdout,stderr){});
+                        result = child_process.exec('mpg321 '+base+"/"+fileList[i] , function(err, stdout,stderr){});
                         playing = true
                         clearInterval(timer);
                     });

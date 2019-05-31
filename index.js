@@ -36,7 +36,7 @@ reader.on('line', (line) => {
                             fileList[i] = fileList[r];
                             fileList[r] = tmp;
                         }
-                        let result =  execSync('mpg321 '+fileList[i]);
+                        let result =  execSync('mpg321 '+base+"/"+fileList[i]);
                         playing = true
                         clearInterval(timer);
                     });

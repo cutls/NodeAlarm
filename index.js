@@ -1,7 +1,7 @@
 const readline = require('readline');
 require('date-utils');
 const reader = readline.createInterface({ input: process.stdin });
-const execSync = require('child_process').execSync;
+const child_process = require('child_process');
 const base = "../media"
 const fs = require('fs');
 let playing = false
@@ -10,10 +10,16 @@ reader.on('line', (line) => {
     if (line.length == 4) {
         if (line == "9999") {
             //reset
-            result.kill();
+            console.log("good morning")
             playing = false
             if (timer) {
                 clearInterval(timer);
+            }
+            if(result){
+                console.log("will killed")
+                result.kill();
+            }else{
+                console.log("not working")
             }
         } else if (line == "7777") {
             //check
@@ -36,7 +42,7 @@ reader.on('line', (line) => {
                             fileList[i] = fileList[r];
                             fileList[r] = tmp;
                         }
-                        let result =  execSync('mpg321 '+base+"/"+fileList[i]);
+                        var result = child_process.exec('mpg321 '+base+"/"+fileList[i] , function(err, stdout,stderr){});
                         playing = true
                         clearInterval(timer);
                     });

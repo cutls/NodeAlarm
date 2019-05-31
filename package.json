@@ -1,0 +1,16 @@
+{
+  "name": "nodealarm",
+  "version": "1.0.0",
+  "description": "Node.js music alarm system",
+  "repository": "https://github.com/cutls/NodeAlarm",
+  "main": "index.js",
+  "author": {
+    "name": "Cutls",
+    "url": "https://cutls.com/@Cutls",
+    "email": "web-pro@cutls.com"
+  },
+  "dependencies": {
+    "date-utils": "^1.2.21",
+    "play-sound": "^1.1.3"
+  }
+}

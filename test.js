@@ -1,4 +1,2 @@
-const player = require('play-sound')();
-let audio = player.play("test.mp3", err => {
-    if (err) throw err
-});
+const execSync = require('child_process').execSync;
+const result =  execSync('mpg321 test.mp3');

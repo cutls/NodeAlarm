@@ -1,7 +1,7 @@
 const readline = require('readline');
 require('date-utils');
 const reader = readline.createInterface({ input: process.stdin });
-const player = require('play-sound')();
+const execSync = require('child_process').execSync;
 const base = "./"
 const fs = require('fs');
 let playing = false
@@ -10,7 +10,7 @@ reader.on('line', (line) => {
     if (line.length == 4) {
         if (line == "9999") {
             //reset
-            audio.kill()
+            let result =  execSync('killall mpg321');
             playing = false
             if (timer) {
                 clearInterval(timer);
@@ -35,9 +35,7 @@ reader.on('line', (line) => {
                             fileList[i] = fileList[r];
                             fileList[r] = tmp;
                         }
-                        let audio = player.play(fileList[0], err => {
-                            if (err) throw err
-                        });
+                        let result =  execSync('mpg321 '+fileList[i]);
                         playing = true
                         clearInterval(timer);
                     });

@@ -22,6 +22,7 @@ reader.on('line', (line) => {
             timer = setInterval(function () {
                 var dt = new Date();
                 var formatted = dt.toFormat("HH24MISS");
+                console.log(formatted)
                 if (formatted == line + "00" && !playing) {
                     //play
                     fs.readdir(base, function (err, files) {
